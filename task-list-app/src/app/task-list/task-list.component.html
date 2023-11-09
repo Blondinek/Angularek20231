@@ -1,0 +1,31 @@
+<div class="container mt-4">
+    <h2>Lista zadań</h2>
+    <div class="input-group mb-3">
+      <input [(ngModel)]="newTask" (keyup.enter)="addTask()" class="form-control" placeholder="Dodaj nowe zadanie">
+      <div class="input-group-append">
+        <button (click)="addTask()" type="button" class="btn btn-primary">Dodaj</button>
+      </div>
+    </div>
+  
+    <div class="row">
+      <div class="col">
+        <h3>Do zrobienia</h3>
+        <ul class="list-group">
+          <li class="list-group-item" *ngFor="let task of tasksToDo; let i = index">
+            {{ task }}
+            <button type="button" class="btn btn-success" (click)="markAsDone(i)">Zrobione</button>
+            <button type="button" class="btn btn-danger" (click)="removeTask(i)">Usuń</button>
+          </li>
+        </ul>
+      </div>
+      <div class="col">
+        <h3>Zrobione ({{ tasksDone.length }})</h3>
+        <ul class="list-group">
+          <li class="list-group-item" *ngFor="let task of tasksDone">
+            {{ task }}
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  
